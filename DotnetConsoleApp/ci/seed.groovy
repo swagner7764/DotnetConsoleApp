@@ -43,6 +43,6 @@ deliveryPipelineView('Dotnet Console App/dotnet delivery pipeline') {
     enableManualTriggers true
     pipelineInstances 5
     pipelines {
-        component('Dotnet Console App/dotnet delivery pipeline', 'dotnet-checkout')
+        component('Dotnet Console App/dotnet delivery pipeline', 'Dotnet Console App/dotnet-checkout')
     }
 }
