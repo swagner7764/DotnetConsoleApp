@@ -2,9 +2,6 @@
   "profiles": {
     "DotnetConsoleApp": {
       "commandName": "Project"
-    },
-    "Docker": {
-      "commandName": "Docker"
     }
   }
 }
