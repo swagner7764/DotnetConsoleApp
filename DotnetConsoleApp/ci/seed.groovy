@@ -1,24 +1,16 @@
-job('DotnetConsoleApp/dotnet-checkout') {   
-  	description 'Check out application from github'
-    scm {
-        github('swagner7764/DotnetConsoleApp', 'master')
-    }
-  	steps{
-     	shell 'echo Checking out application from github'
-    }      
-    publishers {
-        downstream 'DotnetConsoleApp/dotnet-compile', 'SUCCESS'
-    }    
-}
-
 job('DotnetConsoleApp/dotnet-compile'){ 
-	description 'Compile application'  
+	description 'Compile application'
+	scm {
+        	github('swagner7764/DotnetConsoleApp', 'master')
+    	}
   	steps{
-      	shell 'echo Running MSBuild'
+      		shell 'nuget restore "$ENV:WORKSPACE"'
+		shell 'echo Containerizing application via Docker'
+		
    	}    
   	publishers {
-        downstream 'DotnetConsoleApp/dotnet-containerize', 'SUCCESS'
-   }
+        	downstream 'DotnetConsoleApp/dotnet-containerize', 'SUCCESS'
+   	}
 }
 
 job('DotnetConsoleApp/dotnet-containerize'){
