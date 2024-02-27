@@ -6,7 +6,7 @@ job('DotnetConsoleApp/dotnet-compile'){
     	}
   	steps{
       		powerShell 'nuget restore "$ENV:WORKSPACE"'
-		shell 'echo Containerizing application via Docker'
+		powerShell 'echo Containerizing application via Docker'
 		
    	}    
   	publishers {
