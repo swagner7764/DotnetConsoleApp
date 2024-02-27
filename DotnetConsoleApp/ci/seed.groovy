@@ -8,7 +8,7 @@ job('DotnetConsoleApp/dotnet-compile'){
       		powerShell 'nuget restore "$ENV:WORKSPACE"'
 		msbuild {
 			msBuildName('MSBuild 2022')
-			msBuildFile('${WORKSPACE}/DotnetConsoleApp.sln')
+			
 		}		
    	}    
   	publishers {
