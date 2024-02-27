@@ -9,11 +9,7 @@ job('DotnetConsoleApp/dotnet-compile'){
 		msBuild {
 	            	msBuildInstallation('MSBuild 2022')
 	            	buildFile('${WORKSPACE}/DotnetConsoleApp.sln')
-	            	args('check')
-	            	args('another')
-	            	passBuildVariables()
-	            	continueOnBuildFailure()
-	            	unstableIfWarnings()
+	            	
         	}			
    	}    
   	publishers {
