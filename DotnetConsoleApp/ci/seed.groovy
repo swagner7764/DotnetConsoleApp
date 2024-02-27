@@ -8,7 +8,7 @@ job('DotnetConsoleApp/dotnet-compile'){
       		powerShell 'nuget restore "$ENV:WORKSPACE"'
 		msBuild {
 	            	msBuildInstallation('MSBuild 2022')
-	            	buildFile('${WORKSPACE}\DotnetConsoleApp.sln')
+	            	buildFile('${WORKSPACE}/DotnetConsoleApp.sln')
 	            	args('check')
 	            	args('another')
 	            	passBuildVariables()
