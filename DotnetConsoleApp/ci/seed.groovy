@@ -5,7 +5,7 @@ job('DotnetConsoleApp/dotnet-compile'){
         	github('swagner7764/DotnetConsoleApp', 'master')
     	}
   	steps{
-      		shell 'nuget restore "$ENV:WORKSPACE"'
+      		powerShell 'nuget restore "$ENV:WORKSPACE"'
 		shell 'echo Containerizing application via Docker'
 		
    	}    
