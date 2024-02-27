@@ -8,8 +8,7 @@ job('DotnetConsoleApp/dotnet-compile'){
       		powerShell 'nuget restore "$ENV:WORKSPACE"'
 		msBuild {
 	            	msBuildInstallation('MSBuild 2022')
-	            	buildFile('${WORKSPACE}/DotnetConsoleApp.sln')
-	            	
+	            	buildFile('${WORKSPACE}/DotnetConsoleApp.sln')	            	
         	}			
    	}    
   	publishers {
@@ -19,11 +18,13 @@ job('DotnetConsoleApp/dotnet-compile'){
 
 job('DotnetConsoleApp/dotnet-containerize'){
   	description 'Dockerize application'
-    steps{
-       	shell 'echo Containerizing application via Docker'
-    }    
+	customWorkspace('/DotnetConsoleApp/dotnet-compile')
+	label('Windows')
+    	steps{
+		powerShell 'docker build -t dotnettest .'
+	}    
   	publishers {
-        downstream 'DotnetConsoleApp/dotnet-deploy-container', 'SUCCESS'
+        	downstream 'DotnetConsoleApp/dotnet-deploy-container', 'SUCCESS'
   	}
 }
 
