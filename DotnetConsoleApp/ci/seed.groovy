@@ -6,8 +6,10 @@ job('DotnetConsoleApp/dotnet-compile'){
     	}
   	steps{
       		powerShell 'nuget restore "$ENV:WORKSPACE"'
-		powerShell 'echo Containerizing application via Docker'
-		
+		msbuild {
+			msBuildName('MSBuild 2022')
+			msBuildFile('${WORKSPACE}\DotnetConsoleApp.sln')
+		}		
    	}    
   	publishers {
         	downstream 'DotnetConsoleApp/dotnet-containerize', 'SUCCESS'
