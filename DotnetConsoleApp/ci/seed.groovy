@@ -1,5 +1,6 @@
-job('DotnetConsoleApp/dotnet-compile'){ 
+job('DotnetConsoleApp/dotnet-compile'){ 	
 	description 'Compile application'
+	label('Windows')
 	scm {
         	github('swagner7764/DotnetConsoleApp', 'master')
     	}
