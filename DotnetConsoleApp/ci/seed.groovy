@@ -22,6 +22,9 @@ job('DotnetConsoleApp/dotnet-containerize'){
 	label('Windows')
     	steps{
 		powerShell 'docker build . -t dotnettest:1.0.2.$ENV:BUILD_NUMBER -t dotnettest:latest -f C:/tools/jenkins-agent/workspace/DotnetConsoleApp/dotnet-compile/DotnetConsoleApp/DockerFile'
+		powerShell 'aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 105414332808.dkr.ecr.us-west-1.amazonaws.com'
+		powerShell 'docker tag dotnettest:latest 105414332808.dkr.ecr.us-west-1.amazonaws.com/dotnettest:latest'
+		powerShell 'docker push 105414332808.dkr.ecr.us-west-1.amazonaws.com/dotnettest:latest'
 	}    
   	publishers {
         	downstream 'DotnetConsoleApp/dotnet-deploy-container', 'SUCCESS'
