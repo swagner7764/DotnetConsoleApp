@@ -21,7 +21,7 @@ job('DotnetConsoleApp/dotnet-containerize'){
 	customWorkspace('/DotnetConsoleApp/dotnet-compile')
 	label('Windows')
     	steps{
-		powerShell 'docker build -t dotnettest .'
+		powerShell 'docker build . -t dotnettest -f DotnetConsoleApp/DockerFile'
 	}    
   	publishers {
         	downstream 'DotnetConsoleApp/dotnet-deploy-container', 'SUCCESS'
