@@ -21,7 +21,7 @@ job('DotnetConsoleApp/dotnet-containerize'){
 	customWorkspace('C:/tools/jenkins-agent/workspace/DotnetConsoleApp/dotnet-compile')
 	label('Windows')
     	steps{
-		powerShell 'docker build . -t dotnettest -f C:/tools/jenkins-agent/workspace/DotnetConsoleApp/dotnet-compile/DotnetConsoleApp/DockerFile'
+		powerShell 'docker build . -t dotnettest:1.0.2.$ENV:BUILD_NUMBER -t dotnettest:latest -f C:/tools/jenkins-agent/workspace/DotnetConsoleApp/dotnet-compile/DotnetConsoleApp/DockerFile'
 	}    
   	publishers {
         	downstream 'DotnetConsoleApp/dotnet-deploy-container', 'SUCCESS'
