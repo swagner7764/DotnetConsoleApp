@@ -24,7 +24,7 @@
 #COPY --from=publish /app/publish .
 #ENTRYPOINT ["dotnet", "DotnetConsoleApp.dll"]
 
-FROM mcr.microsoft.com/dotnet/runtime:8.0-nanoserver-ltsc
+FROM mcr.microsoft.com/dotnet/runtime:8.0-nanoserver-ltsc2022
 WORKDIR /app
 COPY /bin/Debug/net8.0 .
 ENTRYPOINT ["dotnet", "DotnetConsoleApp.dll"]
