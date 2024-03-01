@@ -25,17 +25,7 @@ job('DotnetConsoleApp/dotnet-containerize'){
 		powerShell 'aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 105414332808.dkr.ecr.us-west-1.amazonaws.com'
 		powerShell 'docker tag dotnettest:1.0.2.$ENV:BUILD_NUMBER 105414332808.dkr.ecr.us-west-1.amazonaws.com/dotnettest:1.0.2.$ENV:BUILD_NUMBER'
 		powerShell 'docker push 105414332808.dkr.ecr.us-west-1.amazonaws.com/dotnettest:1.0.2.$ENV:BUILD_NUMBER'
-	}    
-  	publishers {
-        	downstream 'DotnetConsoleApp/dotnet-deploy-container', 'SUCCESS'
-  	}
-}
-
-job('DotnetConsoleApp/dotnet-deploy-container') {
-    description 'Deploy Container to AWS ECR'    
-    steps{
-      	shell 'echo Deploying container to AWS ECR'
-   	}
+	}  	
 }
 
 deliveryPipelineView('DotnetConsoleApp/dotnet delivery pipeline') {
