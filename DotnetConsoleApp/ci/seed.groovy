@@ -25,8 +25,8 @@ job('DotnetConsoleApp/dotnet-containerize'){
 		powerShell 'aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 105414332808.dkr.ecr.us-west-1.amazonaws.com'
 		powerShell 'docker tag dotnettest:1.0.2.$ENV:BUILD_NUMBER 105414332808.dkr.ecr.us-west-1.amazonaws.com/dotnettest:1.0.2.$ENV:BUILD_NUMBER'
 		powerShell 'docker push 105414332808.dkr.ecr.us-west-1.amazonaws.com/dotnettest:1.0.2.$ENV:BUILD_NUMBER'
-		powerShell 'docker tag dotnettest:1.0.2.$ENV:BUILD_NUMBER 105414332808.dkr.ecr.us-west-1.amazonaws.com/dotnettest:1.0.2.latest'
-		powerShell 'docker push 105414332808.dkr.ecr.us-west-1.amazonaws.com/dotnettest:1.0.2.latest'
+		powerShell 'docker tag dotnettest:1.0.2.$ENV:BUILD_NUMBER 105414332808.dkr.ecr.us-west-1.amazonaws.com/dotnettest:latest'
+		powerShell 'docker push 105414332808.dkr.ecr.us-west-1.amazonaws.com/dotnettest:latest'
 	}  	
 }
 
